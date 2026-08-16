@@ -5,9 +5,11 @@ import pandas as pd
 import duckdb
 import datetime
 
-# Umbrales fijos para etiquetar el nivel de congestión según la ocupación predicha
-UMBRAL_BAJO_MEDIO = 1.0
-UMBRAL_MEDIO_ALTO = 4.06
+# Umbrales para etiquetar el nivel de congestión según la ocupación predicha.
+# Calculados como percentil 33 y 66 de ocupacion_media histórica
+# (ver src/etl/comprobar.py). Recalcular si la distribución de tráfico cambia.
+UMBRAL_BAJO_MEDIO = 1.0 # percentil 33
+UMBRAL_MEDIO_ALTO = 4.06 # percentil 66
 
 # Configuración de rutas relativas para ubicar la raíz del proyecto y el PYTHONPATH
 # src/backend/madflow/app/traffic/services.py
